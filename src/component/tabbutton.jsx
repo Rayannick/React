@@ -1,11 +1,11 @@
 // eslint-disable-next-line react/prop-types
-export default function TabButton({children,bitches}){
+export default function TabButton({children,bitch}){
 
 
 
     return (
         <li>
-            <button onClick={bitches}>{children}</button>
+            <button onClick={bitch}>{children}</button>
         </li>
     )
 }

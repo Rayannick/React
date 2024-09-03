@@ -3,19 +3,26 @@ import { CORE_CONCEPTS } from "./data.js";
 import Header from "./component/header.jsx";
 import { CoreConcept, CoreConcept2 } from "./component/coreconcept.jsx";
 import TabButton from "./component/tabbutton.jsx";
+import { useState } from "react";
+
+console.log("nothing");
 
 function App() {
-  let tabContent = 'for fuck sake , click a button'
+  // first try :== static value
+  let tabContent = "for fuck sake , click a static button";
+
+  // second try :== dynamic value (useState) ====> only "App" function is re-exicuting==>useState" cannot be called at the top level. React Hooks must be called in a React function component
+  const [bitches, selectBitch] = useState(
+    "for fuck sake , click a dynamic button"
+  );
   function handleSelect(names) {
-
-    tabContent = names
-    console.log("A lot of "+ names +" bitches");
-console.log(tabContent)
-
+    selectBitch(names);
+    tabContent = names;
+    console.log("A lot of " + names + " bitches");
+    console.log(tabContent);
   }
 
-  console.log('APP COMPONENT EXECUTING');
-
+  console.log("APP COMPONENT EXECUTING");
 
   return (
     <div>
@@ -47,12 +54,16 @@ console.log(tabContent)
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton bitches={()=> handleSelect('Component')}>Components</TabButton>
-            <TabButton bitches={()=> handleSelect('JSX')}>JSX</TabButton>
-            <TabButton bitches={()=> handleSelect('Props')}>Props</TabButton>
-            <TabButton bitches={()=> handleSelect('State')}>State</TabButton>
+            <TabButton bitch={() => handleSelect("Component")}>
+              Components
+            </TabButton>
+            <TabButton bitch={() => handleSelect("JSX")}>JSX</TabButton>
+            <TabButton bitch={() => handleSelect("Props")}>Props</TabButton>
+            <TabButton bitch={() => handleSelect("State")}>State</TabButton>
           </menu>
           {tabContent}
+          <br />
+          {bitches}
         </section>
       </main>
     </div>
