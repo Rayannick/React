@@ -5,9 +5,18 @@ import { CoreConcept, CoreConcept2 } from "./component/coreconcept.jsx";
 import TabButton from "./component/tabbutton.jsx";
 
 function App() {
-  function handleSelect() {
-    console.log("A lot of bitches");
+  let tabContent = 'for fuck sake , click a button'
+  function handleSelect(names) {
+
+    tabContent = names
+    console.log("A lot of "+ names +" bitches");
+console.log(tabContent)
+
   }
+
+  console.log('APP COMPONENT EXECUTING');
+
+
   return (
     <div>
       <Header></Header>
@@ -38,11 +47,12 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton bitches={handleSelect}>Components</TabButton>
-            <TabButton bitches={handleSelect}>JSX</TabButton>
-            <TabButton bitches={handleSelect}>Props</TabButton>
-            <TabButton bitches={handleSelect}>State</TabButton>
+            <TabButton bitches={()=> handleSelect('Component')}>Components</TabButton>
+            <TabButton bitches={()=> handleSelect('JSX')}>JSX</TabButton>
+            <TabButton bitches={()=> handleSelect('Props')}>Props</TabButton>
+            <TabButton bitches={()=> handleSelect('State')}>State</TabButton>
           </menu>
+          {tabContent}
         </section>
       </main>
     </div>
