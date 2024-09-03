@@ -1,9 +1,13 @@
-import componentsImg1 from "./assets/components.png";
-import { CORE_CONCEPTS } from "./data.js";
-import Header from "./component/header.jsx";
+
+import { useState } from 'react';
+
+import { CORE_CONCEPTS } from './data.js';
+import Header from './component/Header.jsx';
 import { CoreConcept, CoreConcept2 } from "./component/coreconcept.jsx";
 import TabButton from "./component/tabbutton.jsx";
-import { useState } from "react";
+import { EXAMPLES } from './data.js';
+import componentsImg1 from "./assets/components.png";
+
 
 console.log("nothing");
 
@@ -12,17 +16,19 @@ function App() {
   let tabContent = "for fuck sake , click a static button";
 
   // second try :== dynamic value (useState) ====> only "App" function is re-exicuting==>useState" cannot be called at the top level. React Hooks must be called in a React function component
-  const [bitches, selectBitch] = useState(
-    "for fuck sake , click a dynamic button"
-  );
+  
+     const [bitches, updatedBitches] = useState('components');
+
+
   function handleSelect(names) {
-    selectBitch(names);
-    tabContent = names;
+    updatedBitches(names)
+    // tabContent = names;
     console.log("A lot of " + names + " bitches");
-    console.log(tabContent);
+    // console.log(tabContent);
+    console.log(bitches);
   }
 
-  console.log("APP COMPONENT EXECUTING");
+
 
   return (
     <div>
@@ -54,16 +60,24 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton bitch={() => handleSelect("Component")}>
+            <TabButton onSelect={() => handleSelect("components")}>
               Components
             </TabButton>
-            <TabButton bitch={() => handleSelect("JSX")}>JSX</TabButton>
-            <TabButton bitch={() => handleSelect("Props")}>Props</TabButton>
-            <TabButton bitch={() => handleSelect("State")}>State</TabButton>
+            <TabButton onSelect={() => handleSelect("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
           {tabContent}
           <br />
-          {bitches}
+       
+          <div id="tab-content">
+            <h3>{EXAMPLES[bitches].title}</h3>
+            <p>{EXAMPLES[bitches].description}</p>
+            <pre>
+              <code>{EXAMPLES[bitches].code}</code>
+            </pre>
+          </div>
+
         </section>
       </main>
     </div>
@@ -73,3 +87,4 @@ function App() {
 console.log("balls bad");
 
 export default App;
+
