@@ -17,7 +17,8 @@ function App() {
 
   // second try :== dynamic value (useState) ====> only "App" function is re-exicuting==>useState" cannot be called at the top level. React Hooks must be called in a React function component
   
-     const [bitches, updatedBitches] = useState('components');
+     const [bitches, updatedBitches] = useState();
+
 
 
   function handleSelect(names) {
@@ -28,7 +29,19 @@ function App() {
     console.log(bitches);
   }
 
+  
 
+  if(bitches){
+tabContent = (
+  <div id="tab-content">
+  <h3>{EXAMPLES[bitches].title}</h3>
+  <p>{EXAMPLES[bitches].description}</p>
+  <pre>
+    <code>{EXAMPLES[bitches].code}</code>
+  </pre>
+</div>
+)
+  }
 
   return (
     <div>
@@ -53,6 +66,8 @@ function App() {
             {/* holy SHIT */}
 
             <CoreConcept2 {...CORE_CONCEPTS[2]} />
+
+            {CORE_CONCEPTS.map((conceptItem)=> <CoreConcept2 key={conceptItem.title} {...conceptItem}/>)}
           </ul>
         </section>
 
@@ -60,23 +75,18 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => handleSelect("components")}>
+            {/* this result will goes to the frame like tabbutton.jsx */}
+            <TabButton isSelected={bitches === 'components'} onSelect={() => handleSelect("components")}>
               Components
             </TabButton>
-            <TabButton onSelect={() => handleSelect("jsx")}>JSX</TabButton>
-            <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
-            <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
+            <TabButton isSelected={bitches === 'jsx'} onSelect={() => handleSelect("jsx")}>JSX</TabButton>
+            <TabButton isSelected={bitches === 'props'} onSelect={() => handleSelect("props")}>Props</TabButton>
+            <TabButton isSelected={bitches === 'state'} onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
           {tabContent}
           <br />
        
-          <div id="tab-content">
-            <h3>{EXAMPLES[bitches].title}</h3>
-            <p>{EXAMPLES[bitches].description}</p>
-            <pre>
-              <code>{EXAMPLES[bitches].code}</code>
-            </pre>
-          </div>
+       
 
         </section>
       </main>
