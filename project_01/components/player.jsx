@@ -8,23 +8,30 @@ export default function Player( {name , symbol}){
 
 
     const [ isEditing , setEditing ] = useState( false)
+    const [ playerName , setPlayerName ] = useState(name)
 function checking_clicking(){
-   setEditing(true)
+   setEditing((editing)=> !editing)
+}
+
+function handleChange(event){
+    setPlayerName(event.target.value)
 }
     
+let editingName = <span className="player-name">{playerName}</span>
 
-    const playerName = isEditing? <input type="text"  required/> : <span className="player-name">{name}</span>
-
+if(isEditing){
+     editingName = <input type="text" value={playerName} onChange={handleChange} required/> 
+}
 
 
     return(
         <>
          <li>
             <span className="player">
-              {playerName}
+              {editingName}
               <span className="player-symbol">{symbol}</span>
             </span>
-            <button onClick={checking_clicking}>Edit</button>
+            <button onClick={checking_clicking}>{isEditing? 'Save' : 'Edit'}</button>
           </li>
         
         </>

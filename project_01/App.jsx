@@ -11,15 +11,12 @@ function App() {
       <div id="game-container">
         <ol id="players">
     <Player name = 'PlayboY 01' symbol="X"/>
-          <li>
-            <span className="player">
-              playerName_01
-              <span className="player-symbol">X</span>
-            </span>
-            <button>Edit</button>
-          </li>
+    <Player name = 'PlayboY 02' symbol="X"/>
+         
         </ol>
+        Game Board
       </div>
+LOG
     </main>
   );
 }
