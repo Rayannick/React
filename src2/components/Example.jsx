@@ -36,7 +36,7 @@ if (selectedTopic) {
 return (
 <Section title="examples" id='examples'>
   
-<Tabs button={
+<Tabs buttonContainer={"menu"} button={
   
   <>
   <TabButton 
