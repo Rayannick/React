@@ -1,12 +1,12 @@
 
 
-import React from "react";
+// import React from "react";
 
-import ReactDOM from "react-dom/client";
+// import ReactDOM from "react-dom/client";
 
-import App from "./App.jsx";
-import "./index.css";
+// import App from "./App.jsx";
+// import "./index.css";
 
-const entryPoint = document.getElementById("root1");
-ReactDOM.createRoot(entryPoint).render(React.createElement(App))
-// ReactDOM.createRoot(entryPoint).render(<App />);
+// const entryPoint = document.getElementById("root1");
+// ReactDOM.createRoot(entryPoint).render(React.createElement(App))
+// // ReactDOM.createRoot(entryPoint).render(<App />);
