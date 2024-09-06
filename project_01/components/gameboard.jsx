@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react"
+// import { useState } from "react"
 
 
 
@@ -13,19 +13,30 @@ const initialGameBoard = [
 
 
 
-export default function GameBoard ({activePlayerSymbol , onSelectSquare}){
+export default function GameBoard ({ onSelectSquare , turns}){
    
-    const [gameboard , setGameboard] = useState(initialGameBoard)
+
+
+    let gameboard = initialGameBoard
+//     const [gameboard , setGameboard] = useState(initialGameBoard)
    
-   function handleSelectSquare (rowIndex,colIndex){
-    setGameboard((prevGameBoard)=>{
-        const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-        updatedBoard[rowIndex][colIndex] = activePlayerSymbol
-        return updatedBoard
-    })
-onSelectSquare()
+//    function handleSelectSquare (rowIndex,colIndex){
+//     setGameboard((prevGameBoard)=>{
+//         const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
+//         updatedBoard[rowIndex][colIndex] = activePlayerSymbol
+//         return updatedBoard
+//     })
+// onSelectSquare()
+//    }
+   
+   for (const turn of turns){
+    const {square , player} = turn;
+    const { row , col } = square
+
+
+
+    gameboard[row][col] = player
    }
-   
    
    
    
@@ -43,7 +54,7 @@ onSelectSquare()
         
             <li key={colIndex}>
 
-                <button onClick={()=>handleSelectSquare(rowIndex,colIndex)}>{playerSymbol}</button>
+                <button onClick={()=>onSelectSquare(rowIndex,colIndex)}>{playerSymbol}</button>
             </li>
         ))}
     
