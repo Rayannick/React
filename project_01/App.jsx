@@ -2,6 +2,7 @@ import { useState } from "react";
 import GameBoard from "./components/gameboard";
 import Player from "./components/player";
 import Log from "./components/log";
+import Gameover from './components/gameover'
 
 
 
@@ -51,6 +52,9 @@ function handleSelect(rowIndex,colIndex){
     <Player name = 'PlayboY 02' symbol="0" isActive={activePlayer === '0'}/>
          
         </ol>
+
+
+        <Gameover />
 
 <GameBoard onSelectSquare={handleSelect} turns ={gameTurn}  ></GameBoard> 
       </div>
