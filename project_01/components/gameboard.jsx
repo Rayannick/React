@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
 
 
@@ -12,16 +13,17 @@ const initialGameBoard = [
 
 
 
-export default function GameBoard (){
+export default function GameBoard ({activePlayerSymbol , onSelectSquare}){
    
     const [gameboard , setGameboard] = useState(initialGameBoard)
    
    function handleSelectSquare (rowIndex,colIndex){
     setGameboard((prevGameBoard)=>{
         const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-        updatedBoard[rowIndex][colIndex] = 'x'
+        updatedBoard[rowIndex][colIndex] = activePlayerSymbol
         return updatedBoard
     })
+onSelectSquare()
    }
    
    
@@ -52,3 +54,6 @@ export default function GameBoard (){
 
     )
 }
+
+
+
