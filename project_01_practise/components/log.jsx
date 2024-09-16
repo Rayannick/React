@@ -1,10 +1,12 @@
-export default function Log(){
+/* eslint-disable react/prop-types */
+export default function Log({turns}){
     return(
+
         <ol id="log">
-        <li>this player selected 1 and 2</li>
-        <li>this player selected 3 and 4</li>
-        <li>this player selected 5 and 6</li>
-        <li>this player selected 7 and 8</li>
+          {turns.map((turn)=> (
+            <li key={`${turn.square.row}${turn.square.col}`}>flkasjdfljsd</li>
+          ))}
+     
       </ol>
     )
 }
