@@ -1,6 +1,5 @@
 
  /*
- 
  1.place the board
  2. when clicked on board , change the mark
  3. every turn is recorded in an array
@@ -26,7 +25,7 @@ import Gameover from "./gameover";
 
 const PLAYERS = {
   X : 'player 1',
-  Y : 'player 2'
+  O : 'player 2'
 }
 
 
@@ -47,7 +46,7 @@ export default function Gameboard(){
 
 function deriveGameBoard (turns){
 
-  let gameBoard = [...INITIAL_GAME_BOARD].map((array)=> [...array])
+  let gameBoard = [...INITIAL_GAME_BOARD.map((array)=> [...array])]
   
   for(const turn of turns){
     const {square , player}= turn
@@ -76,7 +75,7 @@ function deriveActivePlayer(gameTurn){
 
   let currentPlayer = 'X'
 if(gameTurn.length> 0 && gameTurn[0].player === 'X'){
-  currentPlayer = '0'
+  currentPlayer = 'O'
 }
 
 return currentPlayer;
@@ -116,11 +115,11 @@ function deriveWinner(gameBoarda,player){
   let winner;
   for (const combination of WINNING_COMBINATIONS){
 
-    const firstsymbol = gameBoarda[combination[0].row][combination[0].col];
-    const secondsymbol = gameBoarda[combination[1].row][combination[1].col];
-    const thirdsymbol = gameBoarda[combination[2].row][combination[2].col];
+    const firstsymbol = gameBoarda[combination[0].row][combination[0].column];
+    const secondsymbol = gameBoarda[combination[1].row][combination[1].column];
+    const thirdsymbol = gameBoarda[combination[2].row][combination[2].column];
     
-    if(firstsymbol === secondsymbol && firstsymbol=== thirdsymbol && firstsymbol){
+    if(firstsymbol&& firstsymbol === secondsymbol && firstsymbol=== thirdsymbol ){
       winner = player[firstsymbol];
     }
   } 

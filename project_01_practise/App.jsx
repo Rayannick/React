@@ -1,5 +1,9 @@
 // features :===============
 /**
+ * 
+ * 
+ *  note ::==== parents can pass variable or function as value , while child can only execute the function
+
  * 1/ name edit and save
  * 2/ player change for next turn
  * 3/ log for turn history
